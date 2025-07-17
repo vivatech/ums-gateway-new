@@ -29,8 +29,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"com.vivatech.ums_api_gateway.repository"}, entityManagerFactoryRef = "umsportalEntityManagerFactory", transactionManagerRef = "umsportalTransactionManager")
-@PropertySource("classpath:database.properties")
-//@PropertySource("file:////home/core/ums/gateway/database.properties")
+//@PropertySource("classpath:database.properties")
+@PropertySource("file:////home/core/ums/gateway/database.properties")
 public class UniversityManagementSystemDataSourceConfiguration {
 
   @Bean

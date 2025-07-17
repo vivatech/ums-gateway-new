@@ -17,8 +17,8 @@ import java.util.Base64;
 
 @Slf4j
 @SpringBootApplication
-@PropertySource("classpath:application.properties")
-//@PropertySource("file:////home/core/ums/gateway/application.properties")
+//@PropertySource("classpath:application.properties")
+@PropertySource("file:////home/core/ums/gateway/application.properties")
 public class UmsApiGatewayApplication {
 
 	public static void main(String[] args) {

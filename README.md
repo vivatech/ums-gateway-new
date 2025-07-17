@@ -4,10 +4,12 @@
 - IP - 139.84.167.86
 - Port - 8060
 
-
+# Architecture
 - Java version - 1.8
 - Maven version - apache-maven-3.8.2
-- Jar file location - ums-gateway-new/target/Gateway.jar
+
+# Jar file location 
+ - ums-gateway-new/target/Gateway.jar
 
 # Log file path
 - /home/core/gateway/Gateway.log
