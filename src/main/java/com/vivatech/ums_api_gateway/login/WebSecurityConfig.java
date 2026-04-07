@@ -55,7 +55,7 @@ public class WebSecurityConfig {
         //configuration.setAllowedOrigins(Arrays.asList("http://139.84.167.86:7070/hrpm-web/", "http://localhost:4200")); // Adjust this as per your requirement
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
-        configuration.setAllowCredentials(true); // If you need to allow credentials
+        //configuration.setAllowCredentials(true); // If you need to allow credentials
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

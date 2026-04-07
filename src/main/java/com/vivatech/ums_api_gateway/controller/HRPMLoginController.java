@@ -23,11 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
-
-import static org.synchronoss.cloud.nio.multipart.MultipartUtils.getHeaders;
 
 @RestController
 @RequestMapping(path = "/hrpm/users")
