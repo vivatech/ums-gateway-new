@@ -15,6 +15,7 @@ import java.util.List;
 public class AuthRequestDto {
     private String username;
     private String fullname;
+    private String email;
     private String password;
     private String token;
     private Date tokenExpiry;

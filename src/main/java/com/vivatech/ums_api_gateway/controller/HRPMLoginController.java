@@ -70,6 +70,7 @@ public class HRPMLoginController extends BaseController {
   public AuthRequestDto generateToken(@RequestBody AuthRequestDto authRequestDto) throws Exception {
     logger.info("Entering generateToken");
     String msisdn = null;
+    String email = null;
     try {
       Student student = studentRepository.findByRegistrationNo(authRequestDto.getUsername());
       if (student != null && student.getStatus().equalsIgnoreCase(Utility.convertEnumToString(String.valueOf(UMSEnums.StudentStatus.IN_ACTIVE)))) {
@@ -79,6 +80,7 @@ public class HRPMLoginController extends BaseController {
       if (student != null && student.getStatus().equalsIgnoreCase("ACTIVE")) {
         authRequestDto.setFullname(student.getFirstName());
         msisdn = student.getContactNo();
+        email = student.getEmail();
       }
 
       Instructors instructors = instructorsRepository.findByCode(authRequestDto.getUsername());
@@ -90,6 +92,7 @@ public class HRPMLoginController extends BaseController {
       if (instructors != null && instructors.getStatus().equalsIgnoreCase("ACTIVE")) {
         authRequestDto.setFullname(instructors.getName());
         msisdn = instructors.getContactnumber();
+        email = instructors.getEmail();
       }
       UserDetails userDetails = service.loadUserByUsername(authRequestDto.getUsername());
       if (userDetails == null) {
@@ -167,6 +170,7 @@ public class HRPMLoginController extends BaseController {
       authRequestDto.setPassword(authRequestDto.getPassword());
       authRequestDto.setFirstlogin(newUsers.getFirstlogin());
       authRequestDto.setAuthId(newUsers.getId());
+      authRequestDto.setEmail(email);
 
       if (authRequestDto.getOtp() != null) {
         return verifyOtp(authRequestDto, newUsers, token);

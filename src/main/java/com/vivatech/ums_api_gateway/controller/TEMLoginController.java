@@ -73,6 +73,7 @@ public class TEMLoginController extends BaseController {
   public AuthRequestDto generateToken(@RequestBody AuthRequestDto authRequestDto) throws Exception {
     logger.info("Entering generateToken");
     String msisdn = null;
+    String email = null;
     try {
       Student student = studentRepository.findByRegistrationNo(authRequestDto.getUsername());
       if (student != null && student.getStatus().equalsIgnoreCase(Utility.convertEnumToString(String.valueOf(UMSEnums.StudentStatus.IN_ACTIVE)))) {
@@ -82,6 +83,7 @@ public class TEMLoginController extends BaseController {
       if (student != null && student.getStatus().equalsIgnoreCase("ACTIVE")) {
         authRequestDto.setFullname(student.getFirstName());
         msisdn = student.getContactNo();
+        email = student.getEmail();
       }
 
       Instructors instructors = instructorsRepository.findByCode(authRequestDto.getUsername());
@@ -93,6 +95,7 @@ public class TEMLoginController extends BaseController {
       if (instructors != null && instructors.getStatus().equalsIgnoreCase("ACTIVE")) {
         authRequestDto.setFullname(instructors.getName());
         msisdn = instructors.getContactnumber();
+        email = instructors.getEmail();
       }
       UserDetails userDetails = service.loadUserByUsername(authRequestDto.getUsername());
       if (userDetails == null) {
@@ -170,6 +173,7 @@ public class TEMLoginController extends BaseController {
       authRequestDto.setPassword(authRequestDto.getPassword());
       authRequestDto.setFirstlogin(newUsers.getFirstlogin());
       authRequestDto.setAuthId(newUsers.getUserId());
+      authRequestDto.setEmail(email);
 
       if (authRequestDto.getOtp() != null) {
         return verifyOtp(authRequestDto, newUsers, token);
