@@ -427,13 +427,13 @@ public class HRPMLoginController extends BaseController {
     return getGETApiResponse(restTemplate, url, Object.class);
   }
 
-  @GetMapping(value = "/graduation/type")
-  public String getGradType(){
-    String url = "http://viva-telecom.abto.lan/dev/hrpm/graduation/type";
-    String template = restTemplate.getForObject(url, String.class);
-    logger.info("Response {}", template);
-    return template;
-  }
+//  @GetMapping(value = "/graduation/type")
+//  public String getGradType(){
+//    String url = "http://viva-telecom.abto.lan/dev/hrpm/graduation/type";
+//    String template = restTemplate.getForObject(url, String.class);
+//    logger.info("Response {}", template);
+//    return template;
+//  }
 
   @PostMapping(value = "/report/training")
   public ResponseEntity<String> getTrainingReport(@RequestParam String startDate, @RequestParam String endDate, @RequestBody ReportDto reportDto){
